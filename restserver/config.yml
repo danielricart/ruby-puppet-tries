@@ -1,0 +1,14 @@
+---
+environment: development    
+chdir: /var/www/danielricart/rbws/ruby-puppet-tries/restserver/ 
+address: 0.0.0.0
+user: root
+group: root
+port: 4567
+pid: /var/www/danielricart/rbws/ruby-puppet-tries/restserver/thin.pid
+rackup: /var/www/danielricart/rbws/ruby-puppet-tries/restserver/config.ru
+log: /var/www/danielricart/rbws/ruby-puppet-tries/restserver/thin.log
+max_conns: 1024
+timeout: 30
+max_persistent_conns: 512
+daemonize: false
