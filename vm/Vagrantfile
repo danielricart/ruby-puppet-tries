@@ -1,0 +1,19 @@
+Vagrant::Config.run do |config|
+  # Setup the box
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box" 
+  config.vm.forward_port 80, 8080
+	config.vm.define :project do  |project_config|
+		project_config.vm.host_name = "demo.dev"
+		project_config.vm.network :hostonly, "10.10.10.10"
+
+		config.vm.provision :puppet do |puppet|
+			puppet.manifests_path = "puppet/manifests"
+			puppet.module_path = "puppet/modules"
+			puppet.manifest_file = "default.pp"
+			puppet.options = [
+				'--verbose',
+			]
+		end
+	end
+end
